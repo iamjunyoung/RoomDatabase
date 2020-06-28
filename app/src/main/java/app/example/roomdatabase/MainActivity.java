@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -12,7 +11,6 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         findViewById(R.id.actionAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,5 +84,169 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        findViewById(R.id.actionAdd2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    HomePOI homePOI = new HomePOI();
+                    Position pos = new Position();
+                    pos.setX(10.0f);
+                    pos.setY(12.0f);
+                    homePOI.setPosition(pos);
+                    homePOI.setFloorIndex();
+                    homePOI.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        findViewById(R.id.actionAdd3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    User user = new User();
+                    user.setUserName(name);
+                    user.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        findViewById(R.id.actionAdd4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    User user = new User();
+                    user.setUserName(name);
+                    user.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        findViewById(R.id.actionAdd5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    User user = new User();
+                    user.setUserName(name);
+                    user.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        findViewById(R.id.actionAdd6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    User user = new User();
+                    user.setUserName(name);
+                    user.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        findViewById(R.id.actionAdd7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText inputName = findViewById(R.id.inputName);
+                if (inputName.getText().toString().trim().length() == 0)
+                    return;
+
+                EditText inputAge = findViewById(R.id.inputAge);
+                if (inputAge.getText().toString().trim().length() == 0)
+                    return;
+
+                try {
+                    int age = Integer.valueOf(inputAge.getText().toString().trim());
+                    String name = inputName.getText().toString().trim();
+
+                    User user = new User();
+                    user.setUserName(name);
+                    user.setAge(age);
+
+                    userViewModel.insert(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+         */
     }
 }

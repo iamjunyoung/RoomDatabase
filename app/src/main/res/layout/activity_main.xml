@@ -14,38 +14,270 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <EditText
-            android:id="@+id/inputName"
+        <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="NAME"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            android:lines="1"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:singleLine="true"
-            android:textSize="18dp" />
-
-        <EditText
-            android:id="@+id/inputAge"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="AGE"
-            android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
-            android:lines="1"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:singleLine="true"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/actionAdd"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Add" />
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="POI ID"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/floorIndex"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Floor Index"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/positionX"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="x"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/positionY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="y"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/nameKr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="POI name(kr)"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/attElID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="EL ID"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/attElVendor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="EL vendor"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/attElFloorList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="EL floor list"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/attDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Desc"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/attTel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Tel"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Type"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/restricted"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Restricted"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/theta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Theta"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberSigned"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/addDBPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/addDBPanelIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/actionAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add" />
+            <Button
+                android:id="@+id/actionAdd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add Home" />
+            <Button
+                android:id="@+id/actionAdd3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add Charger" />
+            <Button
+                android:id="@+id/actionAdd4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add ReturnTray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addDBPanelIn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/actionAdd5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add POI list" />
+            <Button
+                android:id="@+id/actionAdd6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add El" />
+            <Button
+                android:id="@+id/actionAdd7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add Door" />
+            <Button
+                android:id="@+id/actionAdd8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Add El"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
     </LinearLayout>
 
     <ListView
