@@ -98,58 +98,10 @@
                     android:singleLine="true"
                     android:textSize="18dp" />
                 <EditText
-                    android:id="@+id/attElID"
+                    android:id="@+id/nameEn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="EL ID"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/attElVendor"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="EL vendor"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/attElFloorList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="EL floor list"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/attDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Desc"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/attTel"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Tel"
+                    android:hint="POI name(en)"
                     android:imeOptions="actionDone"
                     android:inputType="textPersonName"
                     android:lines="1"
@@ -217,28 +169,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/actionAdd"
+                android:id="@+id/actionAddHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="Add" />
-            <Button
-                android:id="@+id/actionAdd2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add Home" />
             <Button
-                android:id="@+id/actionAdd3"
+                android:id="@+id/actionAddCharger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add Charger" />
             <Button
-                android:id="@+id/actionAdd4"
+                android:id="@+id/actionAddReturnTray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add ReturnTray" />
         </LinearLayout>
 
@@ -248,42 +197,104 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/actionAdd5"
+                android:id="@+id/actionAddPoiListPoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add POI list" />
             <Button
-                android:id="@+id/actionAdd6"
+                android:id="@+id/actionAddELPoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add El" />
             <Button
-                android:id="@+id/actionAdd7"
+                android:id="@+id/actionAddDoorPoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add Door" />
             <Button
                 android:id="@+id/actionAdd8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="onClick"
                 android:text="Add El"
                 android:visibility="invisible"/>
         </LinearLayout>
+    </LinearLayout>
 
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="POI List"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewPOIList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="Home"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="Charger"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewCharger"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="ReturnTray"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewReturnTray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="El"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewEl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="Door"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewDoor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
 
     </LinearLayout>
 
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/inputPanel"></ListView>
 
 </RelativeLayout>

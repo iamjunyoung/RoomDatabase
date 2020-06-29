@@ -1,14 +1,24 @@
 package app.example.roomdatabase;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -26,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         userViewModel.getAllUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                ListView listView = findViewById(R.id.listView);
+                ListView listView = findViewById(R.id.listViewPOIList);
                 ListAdapter adapter = listView.getAdapter();
                 if (adapter instanceof ArrayAdapter) {
                     ArrayAdapter<User> arrayAdapter = (ArrayAdapter<User>) adapter;
@@ -44,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Event
-        ListView listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listViewPOIList);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,196 +67,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        findViewById(R.id.actionAdd).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
+    }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.actionAddELPoi:
+                showLoginDialog();
+                break;
+        }
+    }
 
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
+    private void showLoginDialog() {
+        LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout loginLayout = (LinearLayout) vi.inflate(R.layout.dialog_el, null);
+        final EditText id = (EditText)loginLayout.findViewById(R.id.id);
+        final EditText vendor = (EditText)loginLayout.findViewById(R.id.vendor);
+        final EditText floorList = (EditText)loginLayout.findViewById(R.id.floorList);
+        final EditText desc = (EditText)loginLayout.findViewById(R.id.desc);
+        final EditText tel = (EditText)loginLayout.findViewById(R.id.tel);
+        final EditText door = (EditText)loginLayout.findViewById(R.id.door);
+        final EditText inout = (EditText)loginLayout.findViewById(R.id.inout);
 
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+        new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "ID : " + id.getText().toString() + "@nPW : " + vendor.getText().toString(), Toast.LENGTH_SHORT).show();
             }
-        });
-
-
-        findViewById(R.id.actionAdd2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    HomePOI homePOI = new HomePOI();
-                    Position pos = new Position();
-                    pos.setX(10.0f);
-                    pos.setY(12.0f);
-                    homePOI.setPosition(pos);
-                    homePOI.setFloorIndex();
-                    homePOI.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        findViewById(R.id.actionAdd3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        findViewById(R.id.actionAdd4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        findViewById(R.id.actionAdd5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
-        findViewById(R.id.actionAdd6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        findViewById(R.id.actionAdd7).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText inputName = findViewById(R.id.inputName);
-                if (inputName.getText().toString().trim().length() == 0)
-                    return;
-
-                EditText inputAge = findViewById(R.id.inputAge);
-                if (inputAge.getText().toString().trim().length() == 0)
-                    return;
-
-                try {
-                    int age = Integer.valueOf(inputAge.getText().toString().trim());
-                    String name = inputName.getText().toString().trim();
-
-                    User user = new User();
-                    user.setUserName(name);
-                    user.setAge(age);
-
-                    userViewModel.insert(user);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-         */
+        }).show();
     }
 }

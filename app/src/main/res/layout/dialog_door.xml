@@ -3,7 +3,6 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,16 +10,16 @@
         <TextView
             android:layout_height="45dp"
             android:layout_width="0dp"
-            android:text="EL ID"
+            android:text="macAddress"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_weight="1"
-             />
+            />
         <EditText
-            android:id="@+id/id"
+            android:id="@+id/macAddress"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:hint="EL id"
+            android:hint="id"
             android:layout_weight="2"
             />
     </LinearLayout>
@@ -31,36 +30,16 @@
         <TextView
             android:layout_height="45dp"
             android:layout_width="0dp"
-            android:text="EL Vendor"
+            android:text="Company Name"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_weight="1"
             />
         <EditText
-            android:id="@+id/vendor"
+            android:id="@+id/companyName"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:hint="EL Vendor"
-            android:layout_weight="2"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
-            android:text="EL Floor list"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1"
-            />
-        <EditText
-            android:id="@+id/floorList"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="EL Floor List"
+            android:hint="id"
             android:layout_weight="2"
             />
     </LinearLayout>
@@ -79,7 +58,7 @@
             android:id="@+id/desc"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:hint="Desc"
+            android:hint="id"
             android:layout_weight="2" />
     </LinearLayout>
     <LinearLayout
@@ -95,42 +74,6 @@
             android:layout_weight="1" />
         <EditText
             android:id="@+id/tel"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="Tel"
-            android:layout_weight="2" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
-            android:text="Door"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1" />
-        <EditText
-            android:id="@+id/door"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="id"
-            android:layout_weight="2" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
-            android:text="In/Out"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1" />
-        <EditText
-            android:id="@+id/inout"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:hint="id"
