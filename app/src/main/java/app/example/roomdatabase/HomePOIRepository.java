@@ -8,25 +8,25 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 
-class UserRepository {
-    private static final String TAG = UserRepository.class.getSimpleName();
+class HomePOIRepository {
+    private static final String TAG = HomePOIRepository.class.getSimpleName();
 
-    private final UserDao userDao;
-    private final LiveData<List<User>> allUsers;
+    private final HomePOIDao homePOIDao;
+    private final LiveData<List<HomePOI>> allPOIs;
 
-    UserRepository(Application application) {
+    HomePOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
-        userDao = db.userDao();
-        allUsers = userDao.getAllUsers();
+        homePOIDao = db.homePOIDao();
+        allPOIs = homePOIDao.getAllPOIs();
     }
 
-    public void insert(User user) {
-        new AsyncTask<User, Void, Long>() {
+    public void insert(HomePOI HomePOI) {
+        new AsyncTask<HomePOI, Void, Long>() {
             @Override
-            protected Long doInBackground(User... users) {
-                if (userDao == null)
+            protected Long doInBackground(HomePOI... HomePOIs) {
+                if (homePOIDao == null)
                     return -1L;
-                return userDao.insert(users[0]);
+                return homePOIDao.insert(HomePOIs[0]);
             }
 
             @Override
@@ -34,16 +34,16 @@ class UserRepository {
                 super.onPostExecute(aLong);
                 Log.d(TAG, "insert : " + aLong);
             }
-        }.execute(user);
+        }.execute(HomePOI);
     }
 
-    public void update(User user) {
-        new AsyncTask<User, Void, Integer>() {
+    public void update(HomePOI HomePOI) {
+        new AsyncTask<HomePOI, Void, Integer>() {
             @Override
-            protected Integer doInBackground(User... users) {
-                if (userDao == null)
+            protected Integer doInBackground(HomePOI... homePOIs) {
+                if (homePOIDao == null)
                     return -1;
-                return userDao.update(users[0]);
+                return homePOIDao.update(homePOIs[0]);
             }
 
             @Override
@@ -51,16 +51,16 @@ class UserRepository {
                 super.onPostExecute(integer);
                 Log.d(TAG, "update : " + integer);
             }
-        }.execute(user);
+        }.execute(HomePOI);
     }
 
     public void deleteAll() {
         new AsyncTask<Void, Void, Integer>() {
             @Override
             protected Integer doInBackground(Void... voids) {
-                if (userDao == null)
+                if (homePOIDao == null)
                     return -1;
-                return userDao.deleteAll();
+                return homePOIDao.deleteAll();
             }
 
             @Override
@@ -71,24 +71,24 @@ class UserRepository {
         }.execute();
     }
 
-    public void deleteUser(int id) {
+    public void deleteHomePOI(int id) {
         new AsyncTask<Integer, Void, Integer>() {
             @Override
             protected Integer doInBackground(Integer... integers) {
-                if (userDao == null)
+                if (homePOIDao == null)
                     return -1;
-                return userDao.deleteUser(integers[0]);
+                return homePOIDao.deleteHomePOI(integers[0]);
             }
 
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
-                Log.d(TAG, "deleteUser : " + integer);
+                Log.d(TAG, "deleteHomePOI : " + integer);
             }
         }.execute(id);
     }
 
-    public LiveData<List<User>> getAllUsers() {
-        return allUsers;
+    public LiveData<List<HomePOI>> getAllHomePOIs() {
+        return allPOIs;
     }
 }

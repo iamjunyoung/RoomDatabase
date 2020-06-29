@@ -71,42 +71,6 @@
         <TextView
             android:layout_height="45dp"
             android:layout_width="0dp"
-            android:text="Desc"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1" />
-        <EditText
-            android:id="@+id/desc"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="Desc"
-            android:layout_weight="2" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
-            android:text="Tel"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1" />
-        <EditText
-            android:id="@+id/tel"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="Tel"
-            android:layout_weight="2" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
             android:text="Door"
             android:textSize="20sp"
             android:gravity="center"

@@ -23,6 +23,13 @@ public class UserViewModel extends AndroidViewModel {
         repository.insert(user);
     }
 
+    public void insert(POI poi) {
+        if (poi instanceof HomePOI) {
+
+        }
+    }
+
+
     public void update(User user) {
         repository.update(user);
     }

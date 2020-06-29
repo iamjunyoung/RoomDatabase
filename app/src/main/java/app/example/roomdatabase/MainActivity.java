@@ -1,9 +1,7 @@
 package app.example.roomdatabase;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,8 +69,20 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.actionAddHome:
+
+                break;
+            case R.id.actionAddCharger:
+                break;
+            case R.id.actionAddReturnTray:
+                break;
+            case R.id.actionAddPoiListPoi:
+                break;
             case R.id.actionAddELPoi:
+                Log.d("JYN", "getRandomString " + makeRandomString());
                 showLoginDialog();
+                break;
+            case R.id.actionAddDoorPoi:
                 break;
         }
     }
@@ -92,5 +103,52 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "ID : " + id.getText().toString() + "@nPW : " + vendor.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         }).show();
+    }
+
+    public String makeRandomString() {
+        StringBuffer temp = new StringBuffer();
+        Random rnd = new Random();
+        for (int i = 0; i < 20; i++) {
+            int rIndex = rnd.nextInt(3);
+            switch (rIndex) {
+                case 0:
+                    // a-z
+                    temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+                    break;
+                case 1:
+                    // A-Z
+                    temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+                    break;
+                case 2:
+                    // 0-9
+                    temp.append((rnd.nextInt(10)));
+                    break;
+            }
+        }
+        temp.insert(5, "-");
+        temp.insert(11, "-");
+        temp.insert(17, "-");
+
+        return temp.toString();
+    }
+
+    public void inputEditText() {
+        EditText inputName = findViewById(R.id.id);
+        if (inputName.getText().toString().trim().length() == 0)
+            return;
+        EditText inputAge = findViewById(R.id.floorIndex);
+        if (inputAge.getText().toString().trim().length() == 0)
+            return;
+
+        try {
+            int age = Integer.valueOf(inputAge.getText().toString().trim());
+            String name = inputName.getText().toString().trim();
+            User user = new User();
+            user.setUserName(name);
+            user.setAge(age);
+            userViewModel.insert(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
