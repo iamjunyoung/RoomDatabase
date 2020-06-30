@@ -20,7 +20,7 @@ public interface HomePOIDao {
     int deleteAll();
 
     @Query("DELETE FROM home_table WHERE id = :id")
-    int deleteHomePOI(int id);
+    int deletePOI(int id);
 
     @Query("SELECT * from home_table ORDER BY floorIndex ASC")
     LiveData<List<HomePOI>> getAllPOIs();

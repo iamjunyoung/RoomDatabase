@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -19,20 +20,22 @@ import java.util.Random;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity {
 
-    private UserViewModel userViewModel;
+    private static final String TAG = "[POIRoomDataBase][MainActivity]";
+    private UserViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        userViewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+        viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel.getAllUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 ListView listView = findViewById(R.id.listViewPOIList);
@@ -53,54 +56,163 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Event
-        ListView listView = findViewById(R.id.listViewPOIList);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        ListView listViewHome = findViewById(R.id.listViewHome);
+        listViewHome.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
                 if (item instanceof User) {
-                    userViewModel.deleteUser(((User) item).getId());
+                    viewModel.deleteHomePOI(((HomePOI) item).getId());
                     return true;
                 }
                 return false;
             }
         });
 
+        ListView listViewCharger = findViewById(R.id.listViewCharger);
+        listViewCharger.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item instanceof User) {
+                    viewModel.deleteChargerPOI(((ChargerPOI) item).getId());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        ListView listViewReturnTray = findViewById(R.id.listViewReturnTray);
+        listViewReturnTray.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item instanceof User) {
+                    viewModel.deleteReturnTrayPOI(((ReturnTrayPOI) item).getId());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        ListView listViewPOIList = findViewById(R.id.listViewPOIList);
+        listViewPOIList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item instanceof User) {
+                    viewModel.deletePOIListPOI(((POIListPOI) item).getId());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        ListView listViewEL = findViewById(R.id.listViewEl);
+        listViewEL.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item instanceof User) {
+                    viewModel.deleteELPOI(((ELPOI) item).getId());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        ListView listViewDoor = findViewById(R.id.listViewDoor);
+        listViewDoor.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if (item instanceof User) {
+                    viewModel.deleteDoorPOI(((HomePOI) item).getId());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
     }
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.actionAddHome:
-
+                showHomeChargerReturnTrayDialog();
                 break;
             case R.id.actionAddCharger:
+                showHomeChargerReturnTrayDialog();
                 break;
             case R.id.actionAddReturnTray:
+                showHomeChargerReturnTrayDialog();
                 break;
             case R.id.actionAddPoiListPoi:
                 break;
             case R.id.actionAddELPoi:
                 Log.d("JYN", "getRandomString " + makeRandomString());
-                showLoginDialog();
+                showELDialog();
                 break;
             case R.id.actionAddDoorPoi:
+                showDoorDialog();
                 break;
         }
     }
 
-    private void showLoginDialog() {
+    private Attribute showHomeChargerReturnTrayDialog() {
+        LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout loginLayout = (LinearLayout) vi.inflate(R.layout.dialog_home_charger_return, null);
+        final CheckBox currentSet = (CheckBox)loginLayout.findViewById(R.id.check1);
+
+        new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "currentSet : " + currentSet.isChecked(), Toast.LENGTH_LONG).show();
+            }
+        }).show();
+
+        //TODO.
+        return null;
+    }
+
+    private Attribute showELDialog() {
         LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout loginLayout = (LinearLayout) vi.inflate(R.layout.dialog_el, null);
         final EditText id = (EditText)loginLayout.findViewById(R.id.id);
         final EditText vendor = (EditText)loginLayout.findViewById(R.id.vendor);
         final EditText floorList = (EditText)loginLayout.findViewById(R.id.floorList);
-        final EditText desc = (EditText)loginLayout.findViewById(R.id.desc);
-        final EditText tel = (EditText)loginLayout.findViewById(R.id.tel);
         final EditText door = (EditText)loginLayout.findViewById(R.id.door);
         final EditText inout = (EditText)loginLayout.findViewById(R.id.inout);
 
         new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "ID : " + id.getText().toString() + "@nPW : " + vendor.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        "EL ID : " + id.getText().toString()
+                        + "\nEL Vendor : " + vendor.getText().toString()
+                        + "\nEL floorList : " + floorList.getText().toString()
+                        + "\ndoor : " + door.getText().toString()
+                        + "\ninout : " + inout.getText().toString(), Toast.LENGTH_LONG).show();
+            }
+        }).show();
+
+        AttributeEL attributeEL = new AttributeEL();
+        attributeEL.setElId(id.getText().toString());
+        attributeEL.setVendor(vendor.getText().toString());
+        attributeEL.setFloorList(floorList.getText().toString());
+        attributeEL.setDoor(door.getText().toString());
+        attributeEL.setInOut(inout.getText().toString());
+
+        return attributeEL;
+    }
+
+    private void showDoorDialog() {
+        LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout loginLayout = (LinearLayout) vi.inflate(R.layout.dialog_door, null);
+        final EditText macAddress = (EditText)loginLayout.findViewById(R.id.macAddress);
+        final EditText companyName = (EditText)loginLayout.findViewById(R.id.companyName);
+
+        new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "macAddress : " + macAddress.getText().toString() + "companyName : " + companyName.getText().toString(), Toast.LENGTH_LONG).show();
             }
         }).show();
     }
@@ -132,23 +244,244 @@ public class MainActivity extends AppCompatActivity {
         return temp.toString();
     }
 
-    public void inputEditText() {
-        EditText inputName = findViewById(R.id.id);
-        if (inputName.getText().toString().trim().length() == 0)
-            return;
-        EditText inputAge = findViewById(R.id.floorIndex);
-        if (inputAge.getText().toString().trim().length() == 0)
-            return;
+    public POI getInputEditTexts(String tableType) {
+        String poiId = "";
+        String floorIndex = ""; // floorCode, floorName(en), floorName(kr)
+        float positionX;
+        float positionY;
+        String nameKr;
+        String nameEn;
+        String desc;
+        String tel;
+        int radius;
+        int type;
+        int restricted;
+        int theta;
 
+        EditText inputId = findViewById(R.id.id);
+        if (inputId.getText().toString().trim().length() == 0) {
+            poiId = makeRandomString();
+        } else {
+            poiId = inputId.getText().toString();
+        }
+
+        EditText inputFloorIndex = findViewById(R.id.floorIndex);
+        if (inputFloorIndex.getText().toString().trim().length() == 0) {
+            floorIndex = "1.0";
+        } else {
+            floorIndex = inputFloorIndex.getText().toString();
+        }
+
+        EditText inputX = findViewById(R.id.positionX);
+        if (inputX.getText().toString().trim().length() == 0) {
+            positionX = 0.0f;
+        } else {
+            positionX = Float.parseFloat(inputX.getText().toString());
+        }
+
+        EditText inputY = findViewById(R.id.positionY);
+        if (inputY.getText().toString().trim().length() == 0) {
+            positionY = 0.0f;
+        } else {
+            positionY = Float.parseFloat(inputY.getText().toString());
+        }
+
+
+        EditText inputNameKr = findViewById(R.id.nameKr);
+        if (inputNameKr.getText().toString().trim().length() == 0) {
+            nameKr = "N/A";
+        } else {
+            nameKr = inputNameKr.getText().toString();
+        }
+
+        EditText inputNameEn = findViewById(R.id.nameEn);
+        if (inputNameEn.getText().toString().trim().length() == 0) {
+            nameEn = "N/A";
+        } else {
+            nameEn = inputNameEn.getText().toString();
+        }
+
+
+        EditText inputDesc = findViewById(R.id.desc);
+        if (inputDesc.getText().toString().trim().length() == 0) {
+            desc = "N/A";
+        } else {
+            desc = inputDesc.getText().toString();
+        }
+
+        EditText inputTel = findViewById(R.id.tel);
+        if (inputTel.getText().toString().trim().length() == 0) {
+            tel = "010-0000-0000";
+        } else {
+            tel = inputTel.getText().toString();
+        }
+
+        EditText inputRadius = findViewById(R.id.radius);
+        if (inputRadius.getText().toString().trim().length() == 0) {
+            radius = 0;
+        } else {
+            radius = Integer.parseInt(inputRadius.getText().toString());
+        }
+
+        EditText inputType = findViewById(R.id.type);
+        if (inputType.getText().toString().trim().length() == 0) {
+            type = 0;
+        } else {
+            type = Integer.parseInt(inputType.getText().toString());
+        }
+
+        EditText inputRestricted = findViewById(R.id.restricted);
+        if (inputRestricted.getText().toString().trim().length() == 0) {
+            restricted = 0;
+        } else {
+            restricted = Integer.parseInt(inputRestricted.getText().toString());
+        }
+
+        EditText inputTheta = findViewById(R.id.theta);
+        if (inputTheta.getText().toString().trim().length() == 0) {
+            theta = 0;
+        } else {
+            theta = Integer.parseInt(inputTheta.getText().toString());
+        }
+
+        POI poi = null;
+        if ("home".equals(tableType)) {
+            poi = new HomePOI();
+        } else if ("charger".equals(tableType)) {
+            poi = new ChargerPOI();
+        } else if ("returnTray".equals(tableType)) {
+            poi = new ReturnTrayPOI();
+        } else if ("poiListPOI".equals(tableType)) {
+            poi = new POIListPOI();
+        } else if ("el".equals(tableType)) {
+            poi = new ELPOI();
+        } else if ("door".equals(tableType)) {
+            poi = new DoorPOI();
+        } else {
+            poi = new POI();
+        }
+
+        poi.setPoiId(poiId);
+        poi.setFloorCode(getFloorNameEnFromFloorIndex(floorIndex));
+
+        FloorName floorName = new FloorName();
+        floorName.setEn(getFloorNameEnFromFloorIndex(floorIndex));
+        floorName.setKr(getFloorNameKrFromFloorIndex(floorIndex));
+        poi.setFloorName(floorName);
+
+        poi.setFloorIndex(floorIndex);
+
+        Position pos = new Position();
+        pos.setX(positionX);
+        pos.setY(positionY);
+        poi.setPosition(pos);
+
+        Name name = new Name();
+        name.setKr(nameKr);
+        poi.setName(name);
+
+        /*
+        Attribute attribute = new Attribute();
+        attribute.setDesc(desc);
+        attribute.setTel(tel);
+        */
+
+        poi.setRadius(radius);
+        poi.setType(type);
+        poi.setRestricted(restricted);
+        poi.setTheta(theta);
+
+        return poi;
+        /*
         try {
-            int age = Integer.valueOf(inputAge.getText().toString().trim());
-            String name = inputName.getText().toString().trim();
+
             User user = new User();
             user.setUserName(name);
             user.setAge(age);
-            userViewModel.insert(user);
+            viewModel.insert(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
+         */
+    }
+
+    public String getFloorNameEnFromFloorIndex(String floorIndex) { // FloorName = FloorCode
+        String result;
+        if ("-3.0".equals(floorIndex)) {
+            result = "B3";
+        } else if ("-2.0".equals(floorIndex)) {
+            result = "B2";
+        } else if ("-1.0".equals(floorIndex)) {
+            result = "B1";
+        } else if ("1.0".equals(floorIndex)) {
+            result = "F1";
+        } else if ("2.0".equals(floorIndex)) {
+            result = "F2";
+        } else if ("3.0".equals(floorIndex)) {
+            result = "F3";
+        } else if ("4.0".equals(floorIndex)) {
+            result = "F4";
+        } else if ("5.0".equals(floorIndex)) {
+            result = "F5";
+        } else if ("6.0".equals(floorIndex)) {
+            result = "F6";
+        } else if ("7.0".equals(floorIndex)) {
+            result = "F7";
+        } else if ("8.0".equals(floorIndex)) {
+            result = "F8";
+        } else {
+            result = "";
+        }
+        return  result;
+    }
+
+    public String getFloorNameKrFromFloorIndex(String floorIndex) {
+        String result;
+        if ("-3.0".equals(floorIndex)) {
+            result = "지하3층";
+        } else if ("-2.0".equals(floorIndex)) {
+            result = "지하2층";
+        } else if ("-1.0".equals(floorIndex)) {
+            result = "지하1층";
+        } else if ("1.0".equals(floorIndex)) {
+            result = "1층";
+        } else if ("2.0".equals(floorIndex)) {
+            result = "2층";
+        } else if ("3.0".equals(floorIndex)) {
+            result = "3층";
+        } else if ("4.0".equals(floorIndex)) {
+            result = "4층";
+        } else if ("5.0".equals(floorIndex)) {
+            result = "5층";
+        } else if ("6.0".equals(floorIndex)) {
+            result = "6층";
+        } else if ("7.0".equals(floorIndex)) {
+            result = "7층";
+        } else if ("8.0".equals(floorIndex)) {
+            result = "8층";
+        } else {
+            result = "";
+        }
+        return  result;
+    }
+
+
+    public String getFloorIndexFromFloor(String fileNameComp) {
+        // ex) B2 -> -2
+        String result;
+        if ("B3".equals(fileNameComp)) {
+            result = "-3.0";
+        } else if ("B2".equals(fileNameComp)) {
+            result = "-2.0";
+        } else if ("B1".equals(fileNameComp)) {
+            result = "-1.0";
+        } else if ("1F".equals(fileNameComp) || "F1".equals(fileNameComp)) {
+            result = "1.0";
+        } else if ("2F".equals(fileNameComp) || "F2".equals(fileNameComp)) {
+            result = "2.0";
+        } else {
+            result = "";
+        }
+        return  result;
     }
 }

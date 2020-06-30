@@ -141,7 +141,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
-
+                <EditText
+                    android:id="@+id/radius"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Radius"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textSize="18dp" />
                 <EditText
                     android:id="@+id/type"
                     android:layout_width="match_parent"
@@ -251,18 +262,6 @@
                 android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="POI List"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewPOIList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
         <TextView
             android:layout_height="45dp"
             android:layout_width="wrap_content"
@@ -292,6 +291,17 @@
             android:textSize="20sp" />
         <ListView
             android:id="@+id/listViewReturnTray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inputPanel"></ListView>
+
+        <TextView
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:text="POI List"
+            android:textSize="20sp" />
+        <ListView
+            android:id="@+id/listViewPOIList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/inputPanel"></ListView>

@@ -20,7 +20,7 @@ public interface ReturnTrayPOIDao {
     int deleteAll();
 
     @Query("DELETE FROM returnTray_table WHERE id = :id")
-    int deleteUser(int id);
+    int deletePOI(int id);
 
     @Query("SELECT * from returnTray_table ORDER BY floorIndex ASC")
     LiveData<List<ReturnTrayPOI>> getAllPOIs();

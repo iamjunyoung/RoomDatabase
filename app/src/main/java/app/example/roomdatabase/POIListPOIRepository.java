@@ -4,29 +4,29 @@ import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.util.List;
-
 import androidx.lifecycle.LiveData;
 
-class HomePOIRepository {
-    private static final String TAG = HomePOIRepository.class.getSimpleName();
+import java.util.List;
 
-    private final HomePOIDao homePOIDao;
-    private final LiveData<List<HomePOI>> allPOIs;
+class POIListPOIRepository {
+    private static final String TAG = POIListPOIRepository.class.getSimpleName();
 
-    HomePOIRepository(Application application) {
+    private final POIListPOIDao poiDao;
+    private final LiveData<List<POIListPOI>> allPOIs;
+
+    POIListPOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
-        homePOIDao = db.homePOIDao();
-        allPOIs = homePOIDao.getAllPOIs();
+        poiDao = db.poiListPOIDao();
+        allPOIs = poiDao.getAllPOIs();
     }
 
-    public void insert(HomePOI HomePOI) {
-        new AsyncTask<HomePOI, Void, Long>() {
+    public void insert(POIListPOI POIListPOI) {
+        new AsyncTask<POIListPOI, Void, Long>() {
             @Override
-            protected Long doInBackground(HomePOI... HomePOIs) {
-                if (homePOIDao == null)
+            protected Long doInBackground(POIListPOI... POIListPOIs) {
+                if (poiDao == null)
                     return -1L;
-                return homePOIDao.insert(HomePOIs[0]);
+                return poiDao.insert(POIListPOIs[0]);
             }
 
             @Override
@@ -34,16 +34,16 @@ class HomePOIRepository {
                 super.onPostExecute(aLong);
                 Log.d(TAG, "insert : " + aLong);
             }
-        }.execute(HomePOI);
+        }.execute(POIListPOI);
     }
 
-    public void update(HomePOI HomePOI) {
-        new AsyncTask<HomePOI, Void, Integer>() {
+    public void update(POIListPOI POIListPOI) {
+        new AsyncTask<POIListPOI, Void, Integer>() {
             @Override
-            protected Integer doInBackground(HomePOI... homePOIs) {
-                if (homePOIDao == null)
+            protected Integer doInBackground(POIListPOI... POIListPOIs) {
+                if (poiDao == null)
                     return -1;
-                return homePOIDao.update(homePOIs[0]);
+                return poiDao.update(POIListPOIs[0]);
             }
 
             @Override
@@ -51,16 +51,16 @@ class HomePOIRepository {
                 super.onPostExecute(integer);
                 Log.d(TAG, "update : " + integer);
             }
-        }.execute(HomePOI);
+        }.execute(POIListPOI);
     }
 
     public void deleteAll() {
         new AsyncTask<Void, Void, Integer>() {
             @Override
             protected Integer doInBackground(Void... voids) {
-                if (homePOIDao == null)
+                if (poiDao == null)
                     return -1;
-                return homePOIDao.deleteAll();
+                return poiDao.deleteAll();
             }
 
             @Override
@@ -75,20 +75,20 @@ class HomePOIRepository {
         new AsyncTask<Integer, Void, Integer>() {
             @Override
             protected Integer doInBackground(Integer... integers) {
-                if (homePOIDao == null)
+                if (poiDao == null)
                     return -1;
-                return homePOIDao.deletePOI(integers[0]);
+                return poiDao.deletePOI(integers[0]);
             }
 
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
-                Log.d(TAG, "deleteHomePOI : " + integer);
+                Log.d(TAG, "deletePOIListPOI : " + integer);
             }
         }.execute(id);
     }
 
-    public LiveData<List<HomePOI>> getAllPOIs() {
+    public LiveData<List<POIListPOI>> getAllPOIs() {
         return allPOIs;
     }
 }

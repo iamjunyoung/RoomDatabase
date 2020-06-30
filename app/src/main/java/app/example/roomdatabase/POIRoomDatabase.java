@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {User.class, HomePOI.class, ChargerPOI.class, ReturnTrayPOI.class, ELPOI.class, POIListPOI.class, DoorPOI.class}, version = 4)
+@Database(entities = {User.class, HomePOI.class, ChargerPOI.class, ReturnTrayPOI.class, ELPOI.class, POIListPOI.class, DoorPOI.class}, version = 5)
 //@Database(entities = {HomePOI.class, ChargerPOI.class, ReturnTrayPOI.class, ELPOI.class, POIListPOI.class, DoorPOI.class}, version = 4)
 public abstract class POIRoomDatabase extends RoomDatabase {
     public abstract UserDao userDao();

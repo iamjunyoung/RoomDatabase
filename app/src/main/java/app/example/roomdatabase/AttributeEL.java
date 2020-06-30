@@ -10,4 +10,44 @@ public class AttributeEL extends Attribute implements Serializable {
     @SerializedName("el_floor_list") public String floorList;
     @SerializedName("el_door") public String door;
     @SerializedName("el_in_out") public String inOut;
+
+    public String getElId() {
+        return elId;
+    }
+
+    public void setElId(String elId) {
+        this.elId = elId;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
+
+    public String getFloorList() {
+        return floorList;
+    }
+
+    public void setFloorList(String floorList) {
+        this.floorList = floorList;
+    }
+
+    public String getDoor() {
+        return door;
+    }
+
+    public void setDoor(String door) {
+        this.door = door;
+    }
+
+    public String getInOut() {
+        return inOut;
+    }
+
+    public void setInOut(String inOut) {
+        this.inOut = inOut;
+    }
 }

@@ -20,7 +20,7 @@ public interface ChargerPOIDao {
     int deleteAll();
 
     @Query("DELETE FROM charger_table WHERE id = :id")
-    int deleteUser(int id);
+    int deletePOI(int id);
 
     @Query("SELECT * from charger_table ORDER BY floorIndex ASC")
     LiveData<List<ChargerPOI>> getAllPOIs();

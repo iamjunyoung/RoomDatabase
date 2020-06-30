@@ -10,37 +10,16 @@
         <TextView
             android:layout_height="45dp"
             android:layout_width="0dp"
-            android:text="macAddress"
+            android:text="current set"
             android:textSize="12dp"
             android:gravity="center"
             android:layout_weight="1"
             />
-        <EditText
-            android:id="@+id/macAddress"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="xxx:xxx:xxx:xxx"
-            android:layout_weight="2"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="0dp"
-            android:text="Company Name"
-            android:textSize="12dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            />
-        <EditText
-            android:id="@+id/companyName"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:hint="RACOS"
-            android:layout_weight="2"
-            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check"
+            android:id="@+id/check1"
+            android:checked="false" />
     </LinearLayout>
 </LinearLayout>

@@ -20,7 +20,7 @@ public interface ELPOIDao {
     int deleteAll();
 
     @Query("DELETE FROM el_table WHERE id = :id")
-    int deleteUser(int id);
+    int deletePOI(int id);
 
     @Query("SELECT * from el_table ORDER BY floorIndex ASC")
     LiveData<List<ELPOI>> getAllPOIs();

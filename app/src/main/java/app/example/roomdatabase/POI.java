@@ -21,7 +21,7 @@ public class POI {
     @SerializedName("floorName") private FloorName floorName;
 
     @ColumnInfo(name = "floorIndex")
-    @SerializedName("floorIndex") private float floorIndex;
+    @SerializedName("floorIndex") private String floorIndex;
 
     @Embedded
     @SerializedName("position") private Position position;
@@ -78,11 +78,11 @@ public class POI {
         this.floorName = floorName;
     }
 
-    public float getFloorIndex() {
+    public String getFloorIndex() {
         return floorIndex;
     }
 
-    public void setFloorIndex(float floorIndex) {
+    public void setFloorIndex(String floorIndex) {
         this.floorIndex = floorIndex;
     }
 
