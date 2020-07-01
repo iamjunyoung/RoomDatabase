@@ -23,4 +23,12 @@ class FloorName implements Serializable {
     public void setKr(String floorKr) {
         this.floorKr = floorKr;
     }
+
+    @Override
+    public String toString() {
+        return "FloorName{" +
+                "floorEn='" + floorEn + '\'' +
+                ", floorKr='" + floorKr + '\'' +
+                '}';
+    }
 }

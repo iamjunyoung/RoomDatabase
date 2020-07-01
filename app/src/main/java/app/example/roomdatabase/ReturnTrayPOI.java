@@ -27,4 +27,23 @@ class ReturnTrayPOI extends POI {
     public void setAttribute(AttributeNormal attribute) {
         this.attribute = attribute;
     }
+
+    @Override
+    public String toString() {
+        return "ReturnTrayPOI{" +
+                "id=" + id +
+                ", poiId='" + poiId + '\'' +
+                ", floorCode='" + floorCode + '\'' +
+                ", floorName=" + floorName +
+                ", floorIndex='" + floorIndex + '\'' +
+                ", position=" + position +
+                ", name=" + name +
+                ", radius=" + radius +
+                ", type=" + type +
+                ", restricted=" + restricted +
+                ", theta=" + theta +
+                ", currentReturnTray=" + currentReturnTray +
+                ", attribute=" + attribute +
+                '}';
+    }
 }

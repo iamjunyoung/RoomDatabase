@@ -20,7 +20,6 @@ import java.util.Random;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -35,13 +34,109 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        viewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+        viewModel.getAllHomePOIs().observe(this, new Observer<List<HomePOI>>() {
             @Override
-            public void onChanged(List<User> users) {
+            public void onChanged(List<HomePOI> users) {
+                ListView listView = findViewById(R.id.listViewHome);
+                ListAdapter adapter = listView.getAdapter();
+                if (adapter instanceof ArrayAdapter) {
+                    ArrayAdapter<HomePOI> arrayAdapter = (ArrayAdapter<HomePOI>) adapter;
+                    arrayAdapter.clear();
+                    if (users != null)
+                        arrayAdapter.addAll(users);
+
+                    arrayAdapter.notifyDataSetChanged();
+                } else {
+                    adapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, users);
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
+        viewModel.getAllChargerPOIs().observe(this, new Observer<List<ChargerPOI>>() {
+            @Override
+            public void onChanged(List<ChargerPOI> users) {
+                ListView listView = findViewById(R.id.listViewCharger);
+                ListAdapter adapter = listView.getAdapter();
+                if (adapter instanceof ArrayAdapter) {
+                    ArrayAdapter<ChargerPOI> arrayAdapter = (ArrayAdapter<ChargerPOI>) adapter;
+                    arrayAdapter.clear();
+                    if (users != null)
+                        arrayAdapter.addAll(users);
+
+                    arrayAdapter.notifyDataSetChanged();
+                } else {
+                    adapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, users);
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
+        viewModel.getAllReturnTrayPOIs().observe(this, new Observer<List<ReturnTrayPOI>>() {
+            @Override
+            public void onChanged(List<ReturnTrayPOI> users) {
+                ListView listView = findViewById(R.id.listViewReturnTray);
+                ListAdapter adapter = listView.getAdapter();
+                if (adapter instanceof ArrayAdapter) {
+                    ArrayAdapter<ReturnTrayPOI> arrayAdapter = (ArrayAdapter<ReturnTrayPOI>) adapter;
+                    arrayAdapter.clear();
+                    if (users != null)
+                        arrayAdapter.addAll(users);
+
+                    arrayAdapter.notifyDataSetChanged();
+                } else {
+                    adapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, users);
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
+        //viewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+        viewModel.getAllPOIListPOIs().observe(this, new Observer<List<POIListPOI>>() {
+            @Override
+            public void onChanged(List<POIListPOI> users) {
                 ListView listView = findViewById(R.id.listViewPOIList);
                 ListAdapter adapter = listView.getAdapter();
                 if (adapter instanceof ArrayAdapter) {
-                    ArrayAdapter<User> arrayAdapter = (ArrayAdapter<User>) adapter;
+                    ArrayAdapter<POIListPOI> arrayAdapter = (ArrayAdapter<POIListPOI>) adapter;
+                    arrayAdapter.clear();
+                    if (users != null)
+                        arrayAdapter.addAll(users);
+
+                    arrayAdapter.notifyDataSetChanged();
+                } else {
+                    adapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, users);
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
+        viewModel.getAllELPOIs().observe(this, new Observer<List<ELPOI>>() {
+            @Override
+            public void onChanged(List<ELPOI> users) {
+                ListView listView = findViewById(R.id.listViewEl);
+                ListAdapter adapter = listView.getAdapter();
+                if (adapter instanceof ArrayAdapter) {
+                    ArrayAdapter<ELPOI> arrayAdapter = (ArrayAdapter<ELPOI>) adapter;
+                    arrayAdapter.clear();
+                    if (users != null)
+                        arrayAdapter.addAll(users);
+
+                    arrayAdapter.notifyDataSetChanged();
+                } else {
+                    adapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, users);
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
+        viewModel.getAllDoorPOIs().observe(this, new Observer<List<DoorPOI>>() {
+            @Override
+            public void onChanged(List<DoorPOI> users) {
+                ListView listView = findViewById(R.id.listViewDoor);
+                ListAdapter adapter = listView.getAdapter();
+                if (adapter instanceof ArrayAdapter) {
+                    ArrayAdapter<DoorPOI> arrayAdapter = (ArrayAdapter<DoorPOI>) adapter;
                     arrayAdapter.clear();
                     if (users != null)
                         arrayAdapter.addAll(users);
@@ -185,6 +280,18 @@ public class MainActivity extends AppCompatActivity {
 
         new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
+                //MainActivity에 있는 editText의 값들을 전부 읽어감
+                //Dialog에 있는 editText의 값들을 전부 읽어감.
+                ELPOI poi = (ELPOI) getInputEditTexts("el");
+
+                AttributeEL elAttribute = new AttributeEL();
+                elAttribute.setElId(id.getText().toString());
+                elAttribute.setVendor(vendor.getText().toString());
+                elAttribute.setFloorList(floorList.getText().toString());
+                elAttribute.setDoor(door.getText().toString());
+                elAttribute.setInOut(inout.getText().toString());
+                poi.setAttribute(elAttribute);
+                viewModel.insert(poi);
                 Toast.makeText(MainActivity.this,
                         "EL ID : " + id.getText().toString()
                         + "\nEL Vendor : " + vendor.getText().toString()

@@ -14,4 +14,11 @@ public class Name implements Serializable {
     public void setKr(String kr) {
         this.kr = kr;
     }
+
+    @Override
+    public String toString() {
+        return "Name{" +
+                "kr='" + kr + '\'' +
+                '}';
+    }
 }

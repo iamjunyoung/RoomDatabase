@@ -191,77 +191,75 @@
                     android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/addDBPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/addDBPanelIn"
+            android:id="@+id/addDBPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/actionAddHome"
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/addDBPanelIn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add Home" />
-            <Button
-                android:id="@+id/actionAddCharger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add Charger" />
-            <Button
-                android:id="@+id/actionAddReturnTray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add ReturnTray" />
-        </LinearLayout>
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/actionAddHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add Home" />
+                <Button
+                    android:id="@+id/actionAddCharger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add Charger" />
+                <Button
+                    android:id="@+id/actionAddReturnTray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add ReturnTray" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/addDBPanelIn2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/actionAddPoiListPoi"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/addDBPanelIn2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add POI list" />
-            <Button
-                android:id="@+id/actionAddELPoi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add El" />
-            <Button
-                android:id="@+id/actionAddDoorPoi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add Door" />
-            <Button
-                android:id="@+id/actionAdd8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:onClick="onClick"
-                android:text="Add El"
-                android:visibility="invisible"/>
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/actionAddPoiListPoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add POI list" />
+                <Button
+                    android:id="@+id/actionAddELPoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add El" />
+                <Button
+                    android:id="@+id/actionAddDoorPoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add Door" />
+                <Button
+                    android:id="@+id/actionAdd8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:onClick="onClick"
+                    android:text="Add El"
+                    android:visibility="invisible"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
         <TextView
             android:layout_height="45dp"
             android:layout_width="wrap_content"
@@ -327,8 +325,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/inputPanel"></ListView>
-
     </LinearLayout>
-
-
 </RelativeLayout>

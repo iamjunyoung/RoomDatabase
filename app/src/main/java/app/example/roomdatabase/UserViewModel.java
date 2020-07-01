@@ -1,6 +1,7 @@
 package app.example.roomdatabase;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class UserViewModel extends AndroidViewModel {
         } else if (poi instanceof POIListPOI) {
             poiListPOIRepository.insert((POIListPOI) poi);
         } else if (poi instanceof ELPOI) {
+            Log.d("UserViewModel", "insert to EL Table " + poi);
             elPOIRepository.insert((ELPOI) poi);
         } else if (poi instanceof DoorPOI) {
             doorPOIRepository.insert((DoorPOI) poi);

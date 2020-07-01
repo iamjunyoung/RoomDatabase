@@ -17,4 +17,22 @@ class POIListPOI extends POI {
     public void setAttribute(AttributeNormal attribute) {
         this.attribute = attribute;
     }
+
+    @Override
+    public String toString() {
+        return "POIListPOI{" +
+                "id=" + id +
+                ", poiId='" + poiId + '\'' +
+                ", floorCode='" + floorCode + '\'' +
+                ", floorName=" + floorName +
+                ", floorIndex='" + floorIndex + '\'' +
+                ", position=" + position +
+                ", name=" + name +
+                ", radius=" + radius +
+                ", type=" + type +
+                ", restricted=" + restricted +
+                ", theta=" + theta +
+                ", attribute=" + attribute +
+                '}';
+    }
 }

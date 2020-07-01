@@ -50,4 +50,17 @@ public class AttributeEL extends Attribute implements Serializable {
     public void setInOut(String inOut) {
         this.inOut = inOut;
     }
+
+    @Override
+    public String toString() {
+        return "AttributeEL{" +
+                "elId='" + elId + '\'' +
+                ", vendor='" + vendor + '\'' +
+                ", floorList='" + floorList + '\'' +
+                ", door='" + door + '\'' +
+                ", inOut='" + inOut + '\'' +
+                ", desc='" + desc + '\'' +
+                ", tel='" + tel + '\'' +
+                '}';
+    }
 }

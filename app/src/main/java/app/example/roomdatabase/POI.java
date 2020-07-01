@@ -9,42 +9,37 @@ import androidx.room.PrimaryKey;
 public class POI {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    @SerializedName("id") private int id;
+    @SerializedName("id") protected int id;
 
     @ColumnInfo(name = "poiId")
-    @SerializedName("poiId") private String poiId;
+    @SerializedName("poiId") protected String poiId;
 
     @ColumnInfo(name = "floorCode")
-    @SerializedName("floorCode") private String floorCode;
+    @SerializedName("floorCode") protected String floorCode;
 
     @Embedded
-    @SerializedName("floorName") private FloorName floorName;
+    @SerializedName("floorName") protected FloorName floorName;
 
     @ColumnInfo(name = "floorIndex")
-    @SerializedName("floorIndex") private String floorIndex;
+    @SerializedName("floorIndex") protected String floorIndex;
 
     @Embedded
-    @SerializedName("position") private Position position;
+    @SerializedName("position") protected Position position;
 
     @Embedded
-    @SerializedName("name") private Name name;
-
-    /*
-    @Embedded
-    @SerializedName("attribute") public Attribute attribute;
-    */
+    @SerializedName("name") protected Name name;
 
     @ColumnInfo(name = "radius")
-    @SerializedName("radius") private int radius;
+    @SerializedName("radius") protected int radius;
 
     @ColumnInfo(name = "type")
-    @SerializedName("type") private int type;
+    @SerializedName("type") protected int type;
 
     @ColumnInfo(name = "restricted")
-    @SerializedName("restricted") private int restricted;
+    @SerializedName("restricted") protected int restricted;
 
     @ColumnInfo(name = "theta")
-    @SerializedName("theta") private int theta;
+    @SerializedName("theta") protected int theta;
 
     public int getId() {
         return id;
@@ -102,15 +97,6 @@ public class POI {
         this.name = name;
     }
 
-    /*
-    public Attribute getAttribute() {
-        return attribute;
-    }
-
-    public void setAttribute(Attribute attribute) {
-        this.attribute = attribute;
-    }*/
-
     public int getRadius() {
         return radius;
     }
@@ -142,4 +128,23 @@ public class POI {
     public void setTheta(int theta) {
         this.theta = theta;
     }
+
+    /*
+    @Override
+    public String toString() {
+        return "POI{" +
+                "id=" + id +
+                ", poiId='" + poiId + '\'' +
+                ", floorCode='" + floorCode + '\'' +
+                ", floorName=" + floorName +
+                ", floorIndex='" + floorIndex + '\'' +
+                ", position=" + position +
+                ", name=" + name +
+                ", radius=" + radius +
+                ", type=" + type +
+                ", restricted=" + restricted +
+                ", theta=" + theta +
+                '}';
+    }
+     */
 }

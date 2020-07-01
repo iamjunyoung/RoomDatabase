@@ -17,4 +17,22 @@ class DoorPOI extends POI {
     public void setAttribute(AttributeDoor attribute) {
         this.attribute = attribute;
     }
+
+    @Override
+    public String toString() {
+        return "DoorPOI{" +
+                "id=" + id +
+                ", poiId='" + poiId + '\'' +
+                ", floorCode='" + floorCode + '\'' +
+                ", floorName=" + floorName +
+                ", floorIndex='" + floorIndex + '\'' +
+                ", position=" + position +
+                ", name=" + name +
+                ", radius=" + radius +
+                ", type=" + type +
+                ", restricted=" + restricted +
+                ", theta=" + theta +
+                ", attribute=" + attribute +
+                '}';
+    }
 }
