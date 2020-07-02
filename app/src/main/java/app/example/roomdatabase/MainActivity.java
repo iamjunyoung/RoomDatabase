@@ -284,7 +284,24 @@ public class MainActivity extends AppCompatActivity {
                 //Dialog에 있는 editText의 값들을 전부 읽어감.
                 ELPOI poi = (ELPOI) getInputEditTexts("el");
 
+                String desc, tel;
+                EditText inputDesc = findViewById(R.id.desc);
+                if (inputDesc.getText().toString().trim().length() == 0) {
+                    desc = "N/A";
+                } else {
+                    desc = inputDesc.getText().toString();
+                }
+
+                EditText inputTel = findViewById(R.id.tel);
+                if (inputTel.getText().toString().trim().length() == 0) {
+                    tel = "010-0000-0000";
+                } else {
+                    tel = inputTel.getText().toString();
+                }
+
                 AttributeEL elAttribute = new AttributeEL();
+                elAttribute.setDesc(desc);
+                elAttribute.setTel(tel);
                 elAttribute.setElId(id.getText().toString());
                 elAttribute.setVendor(vendor.getText().toString());
                 elAttribute.setFloorList(floorList.getText().toString());
@@ -316,10 +333,35 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout loginLayout = (LinearLayout) vi.inflate(R.layout.dialog_door, null);
         final EditText macAddress = (EditText)loginLayout.findViewById(R.id.macAddress);
         final EditText companyName = (EditText)loginLayout.findViewById(R.id.companyName);
+        DoorPOI poi = (DoorPOI) getInputEditTexts("door");
 
+        String desc, tel;
+        EditText inputDesc = findViewById(R.id.desc);
+        if (inputDesc.getText().toString().trim().length() == 0) {
+            desc = "N/A";
+        } else {
+            desc = inputDesc.getText().toString();
+        }
+
+        EditText inputTel = findViewById(R.id.tel);
+        if (inputTel.getText().toString().trim().length() == 0) {
+            tel = "010-0000-0000";
+        } else {
+            tel = inputTel.getText().toString();
+        }
+
+        AttributeDoor doorAttribute = new AttributeDoor();
+        doorAttribute.setDesc(desc);
+        doorAttribute.setTel(tel);
+        doorAttribute.setMacAddress(macAddress.getText().toString());
+        doorAttribute.setCompanyName(companyName.getText().toString());
+        poi.setAttribute(doorAttribute);
+        viewModel.insert(poi);
         new AlertDialog.Builder(this).setTitle("Login").setView(loginLayout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "macAddress : " + macAddress.getText().toString() + "companyName : " + companyName.getText().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,
+                        "macAddress : " + macAddress.getText().toString()
+                                + "companyName : " + companyName.getText().toString(), Toast.LENGTH_LONG).show();
             }
         }).show();
     }

@@ -1,329 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
-
-    <LinearLayout
-        android:id="@+id/inputPanel"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/layout"
+            android:id="@+id/inputPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <LinearLayout
-                android:id="@+id/layout_1"
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-                <EditText
-                    android:id="@+id/id"
+                <LinearLayout
+                    android:id="@+id/layout_1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="POI ID"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/floorIndex"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="POI ID"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/floorIndex"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Floor Index"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/positionX"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="x"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/positionY"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="y"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Floor Index"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/positionX"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/nameKr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="POI name(kr)"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/nameEn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="POI name(en)"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Desc"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Tel"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="x"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/positionY"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <EditText
+                        android:id="@+id/radius"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Radius"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Type"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/restricted"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Restricted"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                    <EditText
+                        android:id="@+id/theta"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Theta"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberSigned"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textSize="18dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/addDBPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/addDBPanelIn"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="y"
-                    android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/actionAddHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add Home" />
+                    <Button
+                        android:id="@+id/actionAddCharger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add Charger" />
+                    <Button
+                        android:id="@+id/actionAddReturnTray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add ReturnTray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addDBPanelIn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/actionAddPoiListPoi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add POI list" />
+                    <Button
+                        android:id="@+id/actionAddELPoi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add El" />
+                    <Button
+                        android:id="@+id/actionAddDoorPoi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add Door" />
+                    <Button
+                        android:id="@+id/actionAdd8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:onClick="onClick"
+                        android:text="Add El"
+                        android:visibility="invisible"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/listviewPannel1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                    <TextView
+                        android:layout_height="45dp"
+                        android:layout_width="wrap_content"
+                        android:text="Home"
+                        android:textSize="20sp" />
+                    <ListView
+                        android:id="@+id/listViewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/inputPanel"></ListView>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_2"
+                android:id="@+id/listviewPannel2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/nameKr"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:text="Charger"
+                    android:textSize="20sp" />
+                <ListView
+                    android:id="@+id/listViewCharger"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="POI name(kr)"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/nameEn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="POI name(en)"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Desc"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/tel"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Tel"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/inputPanel"></ListView>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_3"
+                android:id="@+id/listviewPannel3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <EditText
-                    android:id="@+id/radius"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:text="ReturnTray"
+                    android:textSize="20sp" />
+                <ListView
+                    android:id="@+id/listViewReturnTray"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Radius"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/type"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Type"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/restricted"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Restricted"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberDecimal"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/theta"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Theta"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberSigned"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:singleLine="true"
-                    android:textSize="18dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/inputPanel"></ListView>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listviewPannel4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:text="POI List"
+                    android:textSize="20sp" />
+                <ListView
+                    android:id="@+id/listViewPOIList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/inputPanel"></ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listviewPannel5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:text="El"
+                    android:textSize="20sp" />
+                <ListView
+                    android:id="@+id/listViewEl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/inputPanel"></ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listviewPannel6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:text="Door"
+                    android:textSize="20sp" />
+                <ListView
+                    android:id="@+id/listViewDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/inputPanel"></ListView>
+            </LinearLayout>
+
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/addDBPanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/addDBPanelIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/actionAddHome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add Home" />
-                <Button
-                    android:id="@+id/actionAddCharger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add Charger" />
-                <Button
-                    android:id="@+id/actionAddReturnTray"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add ReturnTray" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/addDBPanelIn2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/actionAddPoiListPoi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add POI list" />
-                <Button
-                    android:id="@+id/actionAddELPoi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add El" />
-                <Button
-                    android:id="@+id/actionAddDoorPoi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add Door" />
-                <Button
-                    android:id="@+id/actionAdd8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:onClick="onClick"
-                    android:text="Add El"
-                    android:visibility="invisible"/>
-            </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="Home"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewHome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="Charger"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewCharger"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="ReturnTray"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewReturnTray"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="POI List"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewPOIList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="El"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewEl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="wrap_content"
-            android:text="Door"
-            android:textSize="20sp" />
-        <ListView
-            android:id="@+id/listViewDoor"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/inputPanel"></ListView>
-    </LinearLayout>
-</RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
