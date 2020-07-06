@@ -6,6 +6,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(tableName = "door_table")
+public
 class DoorPOI extends POI {
     @Embedded
     @SerializedName("attribute") private AttributeDoor attribute;

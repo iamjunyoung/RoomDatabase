@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class DoorPOIRepository {
+public class DoorPOIRepository {
     private static final String TAG = DoorPOIRepository.class.getSimpleName();
 
     private final DoorPOIDao poiDao;
     private final LiveData<List<DoorPOI>> allPOIs;
 
-    DoorPOIRepository(Application application) {
+    public DoorPOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
         poiDao = db.doorPOIDao();
         allPOIs = poiDao.getAllPOIs();

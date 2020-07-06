@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class ELPOIRepository {
+public class ELPOIRepository {
     private static final String TAG = ELPOIRepository.class.getSimpleName();
 
     private final ELPOIDao poiDao;
     private final LiveData<List<ELPOI>> allPOIs;
 
-    ELPOIRepository(Application application) {
+    public ELPOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
         poiDao = db.elPOIDao();
         allPOIs = poiDao.getAllPOIs();

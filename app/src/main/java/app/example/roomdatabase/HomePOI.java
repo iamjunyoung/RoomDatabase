@@ -6,6 +6,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(tableName = "home_table")
+public
 class HomePOI extends POI {
     @SerializedName("current_home") private Boolean currentHome;
 

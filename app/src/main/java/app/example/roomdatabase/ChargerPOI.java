@@ -6,6 +6,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(tableName = "charger_table")
+public
 class ChargerPOI extends POI {
     @SerializedName("current_charger") private Boolean currentCharger;
 

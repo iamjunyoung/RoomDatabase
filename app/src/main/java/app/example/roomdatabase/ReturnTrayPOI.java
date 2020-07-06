@@ -6,6 +6,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(tableName = "returnTray_table")
+public
 class ReturnTrayPOI extends POI {
     @SerializedName("current_return_tray") private Boolean currentReturnTray;
 

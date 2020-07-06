@@ -6,6 +6,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 
 @Entity(tableName = "el_table")
+public
 class ELPOI extends POI {
     @Embedded
     @SerializedName("attribute") private AttributeEL attribute;

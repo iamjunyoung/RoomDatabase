@@ -8,8 +8,8 @@ import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-public class UserViewModel extends AndroidViewModel {
-    private static final String TAG = UserViewModel.class.getSimpleName();
+public class POIViewModel extends AndroidViewModel {
+    private static final String TAG = POIViewModel.class.getSimpleName();
 
     private final UserRepository repository;
     private final HomePOIRepository homePOIRepository;
@@ -27,7 +27,7 @@ public class UserViewModel extends AndroidViewModel {
     private final LiveData<List<ELPOI>> allELPOIs;
     private final LiveData<List<DoorPOI>> allDoorPOIs;
 
-    public UserViewModel(Application application) {
+    public POIViewModel(Application application) {
         super(application);
         repository = new UserRepository(application);
         homePOIRepository = new HomePOIRepository(application);

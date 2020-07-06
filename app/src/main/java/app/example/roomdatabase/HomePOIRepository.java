@@ -1,6 +1,7 @@
 package app.example.roomdatabase;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -8,14 +9,20 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 
-class HomePOIRepository {
+public class HomePOIRepository {
     private static final String TAG = HomePOIRepository.class.getSimpleName();
 
     private final HomePOIDao homePOIDao;
     private final LiveData<List<HomePOI>> allPOIs;
 
-    HomePOIRepository(Application application) {
+    public HomePOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
+        homePOIDao = db.homePOIDao();
+        allPOIs = homePOIDao.getAllPOIs();
+    }
+
+    public HomePOIRepository(Context context) {
+        POIRoomDatabase db = POIRoomDatabase.getDatabase(context);
         homePOIDao = db.homePOIDao();
         allPOIs = homePOIDao.getAllPOIs();
     }

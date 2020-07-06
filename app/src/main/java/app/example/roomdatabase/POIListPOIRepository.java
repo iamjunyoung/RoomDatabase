@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class POIListPOIRepository {
+public class POIListPOIRepository {
     private static final String TAG = POIListPOIRepository.class.getSimpleName();
 
     private final POIListPOIDao poiDao;
     private final LiveData<List<POIListPOI>> allPOIs;
 
-    POIListPOIRepository(Application application) {
+    public POIListPOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
         poiDao = db.poiListPOIDao();
         allPOIs = poiDao.getAllPOIs();

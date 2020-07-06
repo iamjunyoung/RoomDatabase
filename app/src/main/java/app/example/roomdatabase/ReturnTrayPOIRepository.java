@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class ReturnTrayPOIRepository {
+public class ReturnTrayPOIRepository {
     private static final String TAG = ReturnTrayPOIRepository.class.getSimpleName();
 
     private final ReturnTrayPOIDao poiDao;
     private final LiveData<List<ReturnTrayPOI>> allPOIs;
 
-    ReturnTrayPOIRepository(Application application) {
+    public ReturnTrayPOIRepository(Application application) {
         POIRoomDatabase db = POIRoomDatabase.getDatabase(application);
         poiDao = db.returnTrayPOIDao();
         allPOIs = poiDao.getAllPOIs();

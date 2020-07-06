@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-class Position implements Serializable {
+public class Position implements Serializable {
     @SerializedName("el_id") public float x;
     @SerializedName("el_vendor") public float y;
 

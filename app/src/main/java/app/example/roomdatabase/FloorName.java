@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-class FloorName implements Serializable {
+public class FloorName implements Serializable {
     @SerializedName("floorName_en") public String floorEn;
     @SerializedName("floorName_kr") public String floorKr;
 

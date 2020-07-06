@@ -26,14 +26,14 @@ import androidx.lifecycle.ViewModelProviders;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "[POIRoomDataBase][MainActivity]";
-    private UserViewModel viewModel;
+    private POIViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(POIViewModel.class);
         viewModel.getAllHomePOIs().observe(this, new Observer<List<HomePOI>>() {
             @Override
             public void onChanged(List<HomePOI> users) {

@@ -6,12 +6,25 @@ import android.content.Intent;
 import android.util.Log;
 
 
+import androidx.lifecycle.ViewModelProviders;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import app.example.roomdatabase.ChargerPOIRepository;
+import app.example.roomdatabase.DoorPOIRepository;
+import app.example.roomdatabase.ELPOIRepository;
+import app.example.roomdatabase.HomePOI;
+import app.example.roomdatabase.HomePOIRepository;
+import app.example.roomdatabase.POI;
+import app.example.roomdatabase.POIListPOI;
+import app.example.roomdatabase.POIListPOIRepository;
+import app.example.roomdatabase.POIViewModel;
+import app.example.roomdatabase.ReturnTrayPOIRepository;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -26,8 +39,28 @@ public class InsertAllToDBService extends IntentService {
     private String dec_poiSourceFolderPath =  "/sdcard/porterbot/MAP_LGIDM/";
     private boolean byMapDone = false;
 
+    private HomePOIRepository homePOIRepository;
+    private ChargerPOIRepository chargerPOIRepository;
+    private ReturnTrayPOIRepository returnTrayPOIRepository;
+    private POIListPOIRepository poiListPOIRepository;
+    private ELPOIRepository elPOIRepository;
+    private DoorPOIRepository doorPOIRepository;
+
     public InsertAllToDBService() {
         super("InsertAllToDBService");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        //home. charger, returnTray는 파싱해서 insert하는 poi가 아니므로 아래가 필요 없음.
+        //homePOIRepository = new HomePOIRepository(this.getApplication());
+        //chargerPOIRepository = new ChargerPOIRepository(this.getApplication());
+        //returnTrayPOIRepository = new ReturnTrayPOIRepository(this.getApplication());
+        poiListPOIRepository = new POIListPOIRepository(this.getApplication());
+        elPOIRepository = new ELPOIRepository(this.getApplication());
+        doorPOIRepository = new DoorPOIRepository(this.getApplication());
     }
 
     @Override
@@ -175,6 +208,18 @@ public class InsertAllToDBService extends IntentService {
     }
 
     public ContentValues getContentValuesForJson(JSONObject object) {
+        POI poi = new POI();
+        poiListPOIRepository.insert((POIListPOI) poi); //아래처럼 ContentValues로 insert할 필요가 없기 때문에
+        //ContentValues put을 하여 구성할 필요가 없음.
+        //그냥 repository에 insert하면 됨.
+        int poiType = object.optInt("type", 0);
+        if (poiType == 3) {
+
+        } else if (poiType == 4) {
+
+        } else {
+            // el, door가 아닌 poi 전체
+        }
         ContentValues cv = new ContentValues();
         cv.put(DatabaseContract.POIColumns.POI_ID, object.optString("poiId", "N/A"));
         cv.put(DatabaseContract.POIColumns.FLOOR_CODE, object.optString("floorCode", "N/A"));
