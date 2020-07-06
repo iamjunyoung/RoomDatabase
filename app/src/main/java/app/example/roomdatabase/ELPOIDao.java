@@ -1,20 +1,23 @@
 package app.example.roomdatabase;
 
+import java.util.List;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.List;
-
 @Dao
 public interface ELPOIDao {
     @Insert
-    long insert(ELPOI homePOI);
+    long insert(ELPOI elPOI);
+
+    @Insert
+    long[] insertAll(ELPOI[] elpois);
 
     @Update
-    int update(ELPOI homePOI);
+    int update(ELPOI elPOI);
 
     @Query("DELETE FROM el_table")
     int deleteAll();

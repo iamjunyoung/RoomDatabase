@@ -3,6 +3,7 @@ package app.example.roomdatabase.provider;
 import android.app.Application;
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.ContentUris;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -157,6 +158,7 @@ public class POIProvider extends ContentProvider {
         int count = 0;
         String type = getType(uri);
         if ("poilist".equals(type)) {
+            poiListPOIRepository.deletePOI();
             //SQLiteDatabase db = mHomeChargerDBHelper.getWritableDatabase();
             //count = db.delete(TABLE_HOME_CHARGER_POI, selection, selectionArgs);
             Log.d(TAG, "POIManager delete " + selection + " in TABLE_HOME_CHARGER_POI" );

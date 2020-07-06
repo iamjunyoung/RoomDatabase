@@ -5,9 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.util.Log;
 
-
-import androidx.lifecycle.ViewModelProviders;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,12 +15,10 @@ import java.util.List;
 import app.example.roomdatabase.ChargerPOIRepository;
 import app.example.roomdatabase.DoorPOIRepository;
 import app.example.roomdatabase.ELPOIRepository;
-import app.example.roomdatabase.HomePOI;
 import app.example.roomdatabase.HomePOIRepository;
 import app.example.roomdatabase.POI;
 import app.example.roomdatabase.POIListPOI;
 import app.example.roomdatabase.POIListPOIRepository;
-import app.example.roomdatabase.POIViewModel;
 import app.example.roomdatabase.ReturnTrayPOIRepository;
 
 /**
@@ -202,6 +197,7 @@ public class InsertAllToDBService extends IntentService {
             cv = getContentValuesForJson(array.optJSONObject(i));
             //db.insert(DatabaseContract.TABLE_POI_LIST, null, cv);
         }
+        //bulk메서드 필요
         Log.d(TAG, "generatePOIDatabaseBulk object to db Done. count " + array.length());
 
         //this.getContentResolver().notifyChange(POI_LIST_CONTENT_URI, null);

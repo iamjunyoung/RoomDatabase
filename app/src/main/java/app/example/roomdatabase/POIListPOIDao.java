@@ -1,17 +1,20 @@
 package app.example.roomdatabase;
 
+import java.util.List;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.List;
-
 @Dao
 public interface POIListPOIDao {
     @Insert
     long insert(POIListPOI poiListPOI);
+
+    @Insert
+    long[] insertAll(POIListPOI[] poiListPOIs);
 
     @Update
     int update(POIListPOI poiListPOI);
